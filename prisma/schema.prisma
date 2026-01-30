@@ -9,12 +9,12 @@
 
 generator client {
   provider = "prisma-client-js"
-  //output   = "../generated/prisma"
+  output   = "../generated/prisma"
 }
 
 datasource db {
   provider = "sqlite"
-   url      = "file:./dev.db" // <--- ASEGÚRATE DE QUE ESTA LÍNEA EXISTA
+   url      = env("DATABASE_URL") // <--- ASEGÚRATE DE QUE ESTA LÍNEA EXISTA
 }
 
 
