@@ -14,4 +14,24 @@ generator client {
 
 datasource db {
   provider = "sqlite"
+  url = env("DATABASE_URL")
+}
+
+model User {
+  id         Int      @id @default(autoincrement())
+  email      String   @unique
+  name       String?
+  password   String
+  telephone  String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  role       String   @default("USER")
+  terminalId Int?
+}
+
+model Tenant {
+  id        Int      @id @default(autoincrement())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
