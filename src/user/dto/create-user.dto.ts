@@ -1,10 +1,8 @@
 import { IsEmail, IsOptional, IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { create } from 'domain';
 
 export class CreateUserDto {
   @ApiProperty({ required: true, example: 'usuario@emoresa.com' })
-
   @IsEmail()
   email: string;
 
@@ -17,13 +15,12 @@ export class CreateUserDto {
   @IsString()
   password: string;
 
+  @ApiProperty({ required: false })
   @IsOptional()
   @IsString()
   telephone?: string;
 
-  @ApiProperty({ required: false, example: 1, 'user' })
-  tenanId: number;
+  @ApiProperty({ required: false, example: 1, description: 'tenantId' })
+  @IsOptional()
+  tenantId?: number;
 }
-
-create(createUserDto: CreateUserDto) {
-    return this.prisma.user.create({data: createUserDto});

@@ -1,5 +1,6 @@
-import { PartialType } from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
 
-removeEventListener(id: number) {
-    return this.prisma.user.delete({ where: { id } });
+export class DeleteUserDto {
+  @ApiProperty({ example: 1 })
+  id: number;
 }
